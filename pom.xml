@@ -90,7 +90,7 @@
             <subscribe>https://dev.eclipse.org/mailman/listinfo/jacc-dev</subscribe>
             <unsubscribe>https://dev.eclipse.org/mailman/listinfo/jacc-dev</unsubscribe>
             <archive>https://dev.eclipse.org/mhonarc/lists/jacc-dev</archive>
-       </mailingList>
+        </mailingList>
     </mailingLists>
     <scm>
         <connection>scm:git:ssh://git@github.com/eclipse-ee4j/jacc.git</connection>
@@ -147,8 +147,8 @@
                         </goals>
                     </execution>
                 </executions>
-             </plugin>
-             <plugin>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <version>1.4.3</version>
@@ -186,7 +186,12 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-		    <useDefaultManifestFile>true</useDefaultManifestFile>
+                    <archive>
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile> 
+                        <manifestEntries>
+                            <Automatic-Module-Name>java.security.jacc</Automatic-Module-Name>
+                        </manifestEntries>
+                    </archive>
                     <excludes>
                         <exclude>**/*.java</exclude>
                     </excludes>
@@ -197,16 +202,16 @@
                 <artifactId>maven-remote-resources-plugin</artifactId>
                 <version>1.2.1</version>
                 <executions>
-                  <execution>
-                    <goals>
-                      <goal>process</goal>
-                    </goals>
-                    <configuration>
-                      <resourceBundles>
-                        <resourceBundle>org.glassfish:legal:1.1</resourceBundle>
-                      </resourceBundles>
-                    </configuration>
-                  </execution>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <resourceBundles>
+                                <resourceBundle>org.glassfish:legal:1.1</resourceBundle>
+                            </resourceBundles>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -218,10 +223,10 @@
                 </configuration>
                 <executions>
                     <execution>
-                       <id>attach-sources</id>
-                       <goals>
-                           <goal>jar-no-fork</goal> 
-                       </goals>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal> 
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -254,7 +259,7 @@
                         <goals>
                             <goal>jar</goal>
                         </goals>
-                     </execution>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -319,5 +324,5 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
         </dependency>
-   </dependencies>
+    </dependencies>
 </project>
